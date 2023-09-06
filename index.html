@@ -1,82 +1,11 @@
-<html>
-	<head>
-		<title>Index</title>
-	</head>
-	<body>
-		<textarea id="response" rows="20" cols="100"></textarea> <br><br>
-		<form id="up-form" action="http://localhost/app.php" enctype="multipart/form-data">
-			<input type="file">
-		</form>
-		<button id="fetcher">Fetch</button>
-
-		<script>
-			const btnFetch = document.querySelector('#fetcher');
-			const inputResponse = document.querySelector('#response');
-
-			btnFetch.addEventListener('click', () => {
-				// const inputFile = document.querySelector('input[type="file"]')
-				const form = document.querySelector('#up-form')
-
-				const headers = new Headers()
-				// headers.append('x-api-key', 'fadfjaksjdflksdf')
-				// headers.append('Authorization', 'Bearer asdflkajsdfkajsdfkj')
-
-				// headers.append('Content-Type', 'application/json')
-				// headers.append('Content-Type', 'application/x-www-form-urlencoded')
-				headers.append('Content-Type', 'multipart/form-data')
-
-				/*
-				.. ! upload file
-				const data = {
-					a: 'A',
-					b: 'B'
-				}
-				 */
-
-				const data = new FormData(form)
-				// data.append('avatar', inputFile.files[0])
-				// data.append('username', 'marombeltran')
-
-				Fetch('http:///localhost/app.php', 'POST', headers, data).then(response => {
-					inputResponse.textContent = response
-				})
-			})
-
-			async function Fetch (strUrl, method = 'GET', headers = new Headers(), data = {}) {
-				const contentType = headers.get('Content-Type')
-
-				const init = {
-					method: method,
-					mode: "cors", // no-cors, *cors, same-origin
-					cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-					credentials: "same-origin", // include, *same-origin, omit
-					headers: headers,
-					redirect: "follow", // manual, *follow, error
-					referrerPolicy: "no-referrer",
-				}
-
-				if (contentType && (method.includes('POST') || method.includes('PUT'))) {
-					if (contentType.includes('json')) {
-						console.log('JSON -> ', data)
-						init.body = JSON.stringify(data)
-					} else if (contentType.includes('x-www-form')) {
-						console.log('x-www-form -> ', data instanceof URLSearchParams)
-						init.body = new URLSearchParams(data)
-					} else if (contentType.includes('form-data')) {
-						console.log('form-data -> ', data instanceof FormData)
-						init.body = data
-					}
-				}
-
-				// const request = new Request(new URL(strUrl), init)
-				const response = await fetch(strUrl, init)
-
-				if (! response.ok) {
-					console.log('Request fail ...')
-				}
-
-				return response.text()
-			}
-		</script>
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="module" src="./main.js"></script>
+</head>
+<body>
+    <h1>Fetch Samples</h1>
+</body>
 </html>
