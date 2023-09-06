@@ -1,5 +1,5 @@
 
-const jsonStream= ''
+const jsonStream= 'https://jsonplaceholder.typicode.com/users'
 const imgStream= 'https://picsum.photos/id/237/300/200'
 const fontStream= 'https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCs16Hw5aXp-p7K4KLg.woff2'
 const htmlStream= 'https://example.com'
@@ -16,7 +16,9 @@ export const getData = () => {
             throw new Error('was not a valid request')
         }
 
-        return response.blob() // binary large object, this is for img, font, video, audio
+        return response.blob() // binary large object, for img, font, video, audio
+        return response.text() // for text, html, and xml files, and css, and js
+        return response.json() // for json files
     }).then( blob => {
         const img = document.createElement('img')
         img.src = URL.createObjectURL(blob)
@@ -30,7 +32,9 @@ export const getData = () => {
     const file = new File(
         [JSON.stringify(obj)],
         'data.json',
-        { type: 'application/json' }
+        {
+            type: 'application/json'
+        }
     )
 
     const response = new Response(file, {
