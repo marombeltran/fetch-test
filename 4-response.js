@@ -1,8 +1,8 @@
 
-const jsonStream= 'https://jsonplaceholder.typicode.com/users'
-const imgStream= 'https://picsum.photos/id/237/300/200'
-const fontStream= 'https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCs16Hw5aXp-p7K4KLg.woff2'
-const htmlStream= 'https://example.com'
+const jsonStream = 'https://jsonplaceholder.typicode.com/users'
+const imgStream = 'https://picsum.photos/id/237/300/200'
+const fontStream = 'https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCs16Hw5aXp-p7K4KLg.woff2'
+const htmlStream = 'https://example.com'
 
 const obj = {
     id: crypto.randomUUID(),

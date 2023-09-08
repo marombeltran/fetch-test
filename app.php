@@ -4,8 +4,7 @@ ini_set('display_errors', '1');
 
 $headers = getallheaders();
 
-print_r($_POST);
-print_r($_FILES);
+$output = array_merge($headers, $_GET);
 
-// header('Content-Type: application/json');
-// echo json_encode($_POST);
+header('Content-Type: application/json');
+echo json_encode($output);
